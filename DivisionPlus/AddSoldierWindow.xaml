@@ -1,0 +1,250 @@
+﻿<Window x:Class="DivisionPlus.AddSoldierWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DivisionPlus"
+        mc:Ignorable="d"
+        Title="Додати солдата" Height="340" Width="614" Background="#97C08F">
+    <Grid  VerticalAlignment="Bottom">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="4*"/>
+            <ColumnDefinition  Width="6*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Margin="10">
+            <Label Content="Дані солдата" FontWeight="Bold"  FontSize="19"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Прізвище" Width="83"/>
+                <TextBox x:Name="SurnameInput" TextWrapping="Wrap" Text="" Width="137" Height="22"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Ім'я" Width="83"/>
+                <TextBox x:Name="NameInput" TextWrapping="Wrap" Text="" Width="137" Height="22"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Вік" Width="83"/>
+                <TextBox x:Name="AgeInput" TextWrapping="Wrap" Text="" Width="53" Height="22" PreviewTextInput="TextBox_PreviewTextInput"/>
+            </StackPanel>
+            <StackPanel Height="68" Margin="0, 10">
+                <Label Content="Звання" FontWeight="Bold"  FontSize="19"/>
+                <ComboBox x:Name="RankInput" Width="198" Background="#407734" Foreground="DarkGreen" BorderBrush="Green" Height="27">
+                    <ComboBoxItem Content="Рекрут"/>
+                    <ComboBoxItem Content="Солдат"/>
+                    <ComboBoxItem Content="Сержант"/>
+                    <ComboBoxItem Content="Штаб-сержант"/>
+                    <ComboBoxItem Content="Лейтенант"/>
+                    <ComboBoxItem Content="Капітан"/>
+                    <ComboBoxItem Content="Майор"/>
+                    <ComboBoxItem Content="Підполковник"/>
+                    <ComboBoxItem Content="Полковник"/>
+                    <ComboBoxItem Content="Генерал"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Height="101">
+                <Label Content="Вид Крові" FontWeight="Bold"  FontSize="19"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Група крові" Width="102" />
+                    <ComboBox x:Name="BloodTypeInput" Width="121" BorderBrush="#407734" Foreground="DarkGreen" Height="21">
+                        <ComboBoxItem Content="(I) Перша"/>
+                        <ComboBoxItem Content="(II) Друга"/>
+                        <ComboBoxItem Content="(III) Третя"/>
+                        <ComboBoxItem Content="(IV) Четверта"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Резус крові" Width="102"/>
+                    <ComboBox x:Name="ResusInput" Width="121" Background="#407734" Foreground="DarkGreen" BorderBrush="Green" Height="22">
+                        <ComboBoxItem Content="(Rh-) Мінус"/>
+                        <ComboBoxItem Content="(Rh+) Плюс"/>
+                    </ComboBox>
+                </StackPanel>
+
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Margin="10,10,17,0" Grid.Column="1">
+            <Label Content="Зброя" FontWeight="Bold"  FontSize="19"/>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Label Content="Пістолет" FontWeight="DemiBold"  FontSize="15"/>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Weapon1" Margin="2" Height="15"/>
+                        <Label Content="ПМ" VerticalAlignment="Top"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Weapon2" Margin="2" Height="15"/>
+                        <Label Content="Glock 17" VerticalAlignment="Top" Width="74"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Weapon3" Margin="2" Height="15"/>
+                        <Label Content="Форт-14" VerticalAlignment="Top"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Weapon4" Margin="2" Height="15"/>
+                        <Label Content="ТТ" VerticalAlignment="Top"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Weapon5" Margin="2" Height="15"/>
+                        <Label Content="МП-5" VerticalAlignment="Top"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="Автомат" FontWeight="DemiBold"  FontSize="15"/>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Weapon6" Margin="2" Height="15"/>
+                        <Label Content="M16" VerticalAlignment="Top"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Weapon7" Margin="2" Height="15"/>
+                        <Label Content="M4" VerticalAlignment="Top" Width="67"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Weapon8" Margin="2" Height="15"/>
+                        <Label Content="Вулкан" VerticalAlignment="Top"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Weapon9" Margin="2" Height="15"/>
+                        <Label Content="Форт-224" VerticalAlignment="Top" Width="76"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Weapon10" Margin="2" Height="15"/>
+                        <Label Content="АК-47" VerticalAlignment="Top"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Weapon11" Margin="2" Height="15"/>
+                        <Label Content="АК-74" VerticalAlignment="Top"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel>
+                    <Label Content="Гранатомет" FontWeight="DemiBold"  FontSize="15"/>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Weapon12" Margin="2" Height="15"/>
+                        <Label Content="М320" VerticalAlignment="Top" Width="67"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Weapon13" Margin="2" Height="15"/>
+                        <Label Content="Форт-600А" VerticalAlignment="Top"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Weapon14" Margin="2" Height="15"/>
+                        <Label Content="RPG-40" VerticalAlignment="Top" Width="76"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Weapon15" Margin="2" Height="15"/>
+                        <Label Content="УАГ-40" VerticalAlignment="Top"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Weapon16" Margin="2" Height="15"/>
+                        <Label Content="РПГ-7" VerticalAlignment="Top"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Button Content="Відмінити" Width="127" Height="40" Margin="10" Click="Cancel_Adding_Button_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <!-- Початковий стиль кнопки: білий фон, зелений обвід і зелений текст -->
+                            <Setter Property="Background" Value="White" />
+                            <Setter Property="Foreground" Value="#a01e2d" />
+                            <Setter Property="BorderBrush" Value="#a01e2d" />
+                            <Setter Property="BorderThickness" Value="2" />
+                            <Setter Property="FontWeight" Value="Bold" />
+
+                            <!-- Налаштування шаблону для заокруглених кутів -->
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="border" Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="15">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <!-- Тригер на наведення курсора -->
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <!-- Анімація для градієнтного фону при наведенні -->
+                                                            <ColorAnimation Storyboard.TargetName="border"
+                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                To="#66bb6a" Duration="0:0:0.3" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <!-- Повернення до білого кольору при відведенні курсора -->
+                                                            <ColorAnimation Storyboard.TargetName="border"
+                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                To="White" Duration="0:0:0.3" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="Додати" Width="122" Height="40" Margin="10" Click="Add_SoldierData_Button_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <!-- Початковий стиль кнопки: білий фон, зелений обвід і зелений текст -->
+                            <Setter Property="Background" Value="White" />
+                            <Setter Property="Foreground" Value="#407734" />
+                            <Setter Property="BorderBrush" Value="#407734" />
+                            <Setter Property="BorderThickness" Value="2" />
+                            <Setter Property="FontWeight" Value="Bold" />
+
+                            <!-- Налаштування шаблону для заокруглених кутів -->
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="border" Background="{TemplateBinding Background}"
+BorderBrush="{TemplateBinding BorderBrush}"
+BorderThickness="{TemplateBinding BorderThickness}"
+CornerRadius="15">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <!-- Тригер на наведення курсора -->
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <!-- Анімація для градієнтного фону при наведенні -->
+                                                            <ColorAnimation Storyboard.TargetName="border"
+                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                            To="#66bb6a" Duration="0:0:0.3" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <!-- Повернення до білого кольору при відведенні курсора -->
+                                                            <ColorAnimation Storyboard.TargetName="border"
+                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                            To="White" Duration="0:0:0.3" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -1,0 +1,569 @@
+﻿<Window x:Class="DivisionPlus.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DivisionPlus"
+        mc:Ignorable="d"
+        
+        Title="Дивізія+" Height="900" Width="1600"
+        FontFamily="Calibri" Background="#97C08F" FontSize="17">
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid x:Name="SoldierDataGrid" Grid.Column="0" Margin="5" Background="#407734" 
+                  AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding Number}" CanUserSort="False" Width="Auto"/>
+                <DataGridTextColumn Header="Прізвище" Binding="{Binding Surname}" CanUserSort="False" Width="*"/>
+                <DataGridTextColumn Header="Ім‘я" Binding="{Binding Name}" CanUserSort="False" Width="*"/>
+                <DataGridTextColumn Header="Вік" Binding="{Binding Age}" CanUserSort="False" Width="Auto"/>
+                <DataGridTextColumn Header="Група крові" Binding="{Binding BloodTypeString}" CanUserSort="False" Width="Auto"/>
+                <DataGridTextColumn Header="Звання" Binding="{Binding RankString}" CanUserSort="False" Width="*"/>
+                <DataGridTextColumn Header="Боєкомплект" Binding="{Binding WeaponsString}" CanUserSort="False" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <Grid Grid.Column="1">
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Column="0" Grid.Row="0">
+                <Image Source="Images/LogoDivision.png" Margin="0, 25" Height="72" Width="260"/>
+
+                <Button Content="Додати" Height="54" Margin="20, 30, 20, 20" FontSize="21" Click="Add_Soldier_Button_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#407734" />
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="BorderBrush" Value="#407734" />
+                            <Setter Property="BorderThickness" Value="1" />
+                            <Setter Property="FontWeight" Value="Bold" />
+
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="15">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetName="border" 
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="#66bb6a" Duration="0:0:0.5" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetName="border" 
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="#407734" Duration="0:0:0.5" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button Content="Редагувати" Height="56" Margin="20" FontSize="21" Click="Change_Soldier_Button_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#407734" />
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="BorderBrush" Value="#407734" />
+                            <Setter Property="BorderThickness" Value="1" />
+                            <Setter Property="FontWeight" Value="Bold" />
+
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="border" 
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="15">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetName="border" 
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="#66bb6a" Duration="0:0:0.5" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetName="border" 
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="#407734" Duration="0:0:0.5" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button Content="Видалити" Height="53" Margin="20" FontSize="21" Click="Delete_Soldier_Button_Click">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#407734" />
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="BorderBrush" Value="#407734" />
+                            <Setter Property="BorderThickness" Value="1" />
+                            <Setter Property="FontWeight" Value="Bold" />
+
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="border" 
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="15">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetName="border" 
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="#66bb6a" Duration="0:0:0.5" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetName="border" 
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="#407734" Duration="0:0:0.5" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <StackPanel Height="179" Margin="0, 15, 0, 0">
+                    <Label Content="Знайти бійця" FontWeight="Bold"  FontSize="19"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Прізвище" Width="83"/>
+                        <TextBox x:Name="SearchSurnameInput" TextWrapping="Wrap" Text="" Width="200" Height="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Ім'я" Width="83"/>
+                        <TextBox x:Name="SearchNameInput" TextWrapping="Wrap" Text="" Width="200" Height="25"/>
+                    </StackPanel>
+                    <Button Content="Знайти" Width="153" Height="36" Margin="15" Click="Search_Button_Click">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <!-- Початковий стиль кнопки: білий фон, зелений обвід і зелений текст -->
+                                <Setter Property="Background" Value="White" />
+                                <Setter Property="Foreground" Value="#407734" />
+                                <Setter Property="BorderBrush" Value="#407734" />
+                                <Setter Property="BorderThickness" Value="2" />
+                                <Setter Property="FontWeight" Value="Bold" />
+
+                                <!-- Налаштування шаблону для заокруглених кутів -->
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="border" Background="{TemplateBinding Background}"
+BorderBrush="{TemplateBinding BorderBrush}"
+BorderThickness="{TemplateBinding BorderThickness}"
+CornerRadius="15">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <!-- Тригер на наведення курсора -->
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Trigger.EnterActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <!-- Анімація для градієнтного фону при наведенні -->
+                                                                <ColorAnimation Storyboard.TargetName="border"
+                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                            To="#66bb6a" Duration="0:0:0.3" />
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.EnterActions>
+                                                    <Trigger.ExitActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <!-- Повернення до білого кольору при відведенні курсора -->
+                                                                <ColorAnimation Storyboard.TargetName="border"
+                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                            To="White" Duration="0:0:0.3" />
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.ExitActions>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="1"  Background="#79b382" Grid.Row="0">
+                <StackPanel Height="150" Margin="10, 10, 10, 5">
+                    <Label Content="Групи Крові" FontWeight="Bold"  FontSize="19"/>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Blood1P" Content="I+" IsChecked="True" VerticalAlignment="Center" Margin="5"/>
+                        <CheckBox x:Name="Blood2P" Content="II+" IsChecked="True" VerticalAlignment="Center" Margin="5"/>
+                        <CheckBox x:Name="Blood3P" Content="III+" IsChecked="True" VerticalAlignment="Center" Margin="5"/>
+                        <CheckBox x:Name="Blood4P" Content="IV+" IsChecked="True" VerticalAlignment="Center" Margin="5"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="Blood1M" Content="I-" IsChecked="True" VerticalAlignment="Center" Margin="5" Width="33"/>
+                        <CheckBox x:Name="Blood2M" Content="II-" IsChecked="True" VerticalAlignment="Center" Margin="5" Width="37"/>
+                        <CheckBox x:Name="Blood3M" Content="III-" IsChecked="True" VerticalAlignment="Center" Margin="5" Width="41"/>
+                        <CheckBox x:Name="Blood4M" Content="IV-" IsChecked="True" VerticalAlignment="Center" Margin="5"/>
+                    </StackPanel>
+                    <Label Content="Донорство" FontWeight="DemiBold"  FontSize="17"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="І+" Margin="5, 0" Width="25" Click="Donor1P_Button_Click"></Button>
+                        <Button Content="ІI+" Margin="5, 0" Width="25" Click="Donor2P_Button_Click"></Button>
+                        <Button Content="ІII+" Margin="5, 0" Width="25" Click="Donor3P_Button_Click"></Button>
+                        <Button Content="ІV+" Margin="5, 0" Width="25" Click="Donor4P_Button_Click"></Button>
+                        <Button Content="І-" Margin="5, 0" Width="25" Click="Donor1M_Button_Click"></Button>
+                        <Button Content="ІI-" Margin="5, 0" Width="25" Click="Donor2M_Button_Click"></Button>
+                        <Button Content="III-" Margin="5, 0" Width="25" Click="Donor3M_Button_Click"></Button>
+                        <Button Content="ІV-" Margin="5, 0" Width="25" Click="Donor4M_Button_Click"></Button>
+                    </StackPanel>
+
+                </StackPanel>
+                <StackPanel Height="68" Margin="10, 5">
+                    <Label Content="Звання" FontWeight="Bold"  FontSize="19"/>
+                    <ComboBox x:Name="RankInput" SelectedIndex="0" Width="198" Background="#407734" Foreground="DarkGreen" BorderBrush="Green" Height="27">
+                        <ComboBoxItem Content=" - "/>
+                        <ComboBoxItem Content="Рекрут"/>
+                        <ComboBoxItem Content="Солдат"/>
+                        <ComboBoxItem Content="Сержант"/>
+                        <ComboBoxItem Content="Штаб-сержант"/>
+                        <ComboBoxItem Content="Лейтенант"/>
+                        <ComboBoxItem Content="Капітан"/>
+                        <ComboBoxItem Content="Майор"/>
+                        <ComboBoxItem Content="Підполковник"/>
+                        <ComboBoxItem Content="Полковник"/>
+                        <ComboBoxItem Content="Генерал"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Height="76" Margin="10,5">
+                    <Label Content="Вік" FontWeight="Bold"  FontSize="19"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Від" Width="35" />
+                        <TextBox x:Name="MinAgeInput" TextWrapping="Wrap" Text="" Width="65" Height="25" PreviewTextInput="TextBox_PreviewTextInput"/>
+                        <Label Content="  До" Width="38"/>
+                        <TextBox x:Name="MaxAgeInput" TextWrapping="Wrap" Text="" Width="65" Height="25" PreviewTextInput="TextBox_PreviewTextInput"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Height="200" Margin="10, 5">
+                    <Label Content="Зброя" FontWeight="Bold"  FontSize="19"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="К-сть зброї" Width="102"/>
+                        <TextBox x:Name="WeaponNumberInput" TextWrapping="Wrap" Text="" Width="62" Height="25"  PreviewTextInput="TextBox_PreviewTextInput"/>
+                    </StackPanel>
+
+                    <Label Content="Види зброї" FontWeight="Heavy"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Пістолет" Width="92"/>
+                        <CheckBox x:Name="AllowWeapon1"  Height="15" Width="22" IsChecked="True"/>
+                        <ComboBox x:Name="Weapon1Select" Width="96" Height="24" SelectedIndex="0" Background="#407734" 
+                                  Foreground="DarkGreen" BorderBrush="Green" IsEnabled="{Binding IsChecked, ElementName=AllowWeapon1}">
+                            <ComboBoxItem Content=" - "/>
+                            <ComboBoxItem Content="ПМ"/>
+                            <ComboBoxItem Content="Glock-17"/>
+                            <ComboBoxItem Content="Форт-14"/>
+                            <ComboBoxItem Content="ТТ"/>
+                            <ComboBoxItem Content="МП5"/>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Автомат" VerticalAlignment="Top" Width="92"/>
+                        <CheckBox x:Name="AllowWeapon2" Height="15" Width="22" IsChecked="True"/>
+                        <ComboBox x:Name="Weapon2Select" Width="96" Height="24" SelectedIndex="0" Background="#407734" 
+                                  Foreground="DarkGreen" BorderBrush="Green" IsEnabled="{Binding IsChecked, ElementName=AllowWeapon2}" >
+                            <ComboBoxItem Content=" - "/>
+                            <ComboBoxItem Content="М16"/>
+                            <ComboBoxItem Content="М4"/>
+                            <ComboBoxItem Content="Вулкан"/>
+                            <ComboBoxItem Content="Форт-224"/>
+                            <ComboBoxItem Content="АК-47"/>
+                            <ComboBoxItem Content="АК-74"/>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Гранатомет" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="AllowWeapon3" Height="15" Width="21" IsChecked="True"/>
+                        <ComboBox x:Name="Weapon3Select" Width="96" Height="24" SelectedIndex="0" Background="#407734" 
+                                  Foreground="DarkGreen" BorderBrush="Green" IsEnabled="{Binding IsChecked, ElementName=AllowWeapon3}" >
+                            <ComboBoxItem Content=" - "/>
+                            <ComboBoxItem Content="М320"/>
+                            <ComboBoxItem Content="Форт-600А"/>
+                            <ComboBoxItem Content="RPG-40"/>
+                            <ComboBoxItem Content="УАГ-40"/>
+                            <ComboBoxItem Content="РПГ-7"/>
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+                <Label Content="Якщо залишені пусті введення, то під час&#xD;&#xA;фільтрації будуть зараховані всі дані по даній &#xD;&#xA;категорії" Height="60" FontStyle="Italic" FontSize="14"/>
+                <StackPanel Orientation="Horizontal" Height="84">
+                    <Button Content="Скинути фільтр" Width="127" Height="40" Margin="10" Click="Cancel_Filter_Button_Click">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <!-- Початковий стиль кнопки: білий фон, зелений обвід і зелений текст -->
+                                <Setter Property="Background" Value="White" />
+                                <Setter Property="Foreground" Value="#f14223" />
+                                <Setter Property="BorderBrush" Value="#f14223" />
+                                <Setter Property="BorderThickness" Value="2" />
+                                <Setter Property="FontWeight" Value="Bold" />
+
+                                <!-- Налаштування шаблону для заокруглених кутів -->
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="border" Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="15">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <!-- Тригер на наведення курсора -->
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Trigger.EnterActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <!-- Анімація для градієнтного фону при наведенні -->
+                                                                <ColorAnimation Storyboard.TargetName="border"
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="#66bb6a" Duration="0:0:0.3" />
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.EnterActions>
+                                                    <Trigger.ExitActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <!-- Повернення до білого кольору при відведенні курсора -->
+                                                                <ColorAnimation Storyboard.TargetName="border"
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="White" Duration="0:0:0.3" />
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.ExitActions>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Content="Фільтрувати" Width="122" Height="40" Margin="10" Click="Filter_Button_Click">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <!-- Початковий стиль кнопки: білий фон, зелений обвід і зелений текст -->
+                                <Setter Property="Background" Value="White" />
+                                <Setter Property="Foreground" Value="#dc8c17" />
+                                <Setter Property="BorderBrush" Value="#dc8c17" />
+                                <Setter Property="BorderThickness" Value="2" />
+                                <Setter Property="FontWeight" Value="Bold" />
+
+                                <!-- Налаштування шаблону для заокруглених кутів -->
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border x:Name="border" Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            CornerRadius="15">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <!-- Тригер на наведення курсора -->
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Trigger.EnterActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <!-- Анімація для градієнтного фону при наведенні -->
+                                                                <ColorAnimation Storyboard.TargetName="border"
+                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                        To="#66bb6a" Duration="0:0:0.3" />
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.EnterActions>
+                                                    <Trigger.ExitActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <!-- Повернення до білого кольору при відведенні курсора -->
+                                                                <ColorAnimation Storyboard.TargetName="border"
+                                        Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                        To="White" Duration="0:0:0.3" />
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.ExitActions>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+                <Label Content="Щоб скористатися додатковими функціями&#xD;&#xA;програми (сортування, визначення кількості&#xD;&#xA;озброєння), відфільтруйте список" Height="60" FontStyle="Italic" FontSize="14"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Background="#61b782" Orientation="Horizontal">
+                <Button Content="Записати у файл" Height="39" Margin="25" FontSize="21" Width="234" Click="WriteToFileButton_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#407734" />
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="BorderBrush" Value="#407734" />
+                            <Setter Property="BorderThickness" Value="1" />
+                            <Setter Property="FontWeight" Value="Bold" />
+
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="border" 
+Background="{TemplateBinding Background}"
+BorderBrush="{TemplateBinding BorderBrush}"
+BorderThickness="{TemplateBinding BorderThickness}"
+CornerRadius="15">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetName="border" 
+                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                            To="#66bb6a" Duration="0:0:0.5" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetName="border" 
+                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                            To="#407734" Duration="0:0:0.5" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+                <Button Content="Зчитати з файлу" Height="37" Margin="25" FontSize="21" Width="234" Click="ReadFromFileButton_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#407734" />
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="BorderBrush" Value="#407734" />
+                            <Setter Property="BorderThickness" Value="1" />
+                            <Setter Property="FontWeight" Value="Bold" />
+
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="border" 
+Background="{TemplateBinding Background}"
+BorderBrush="{TemplateBinding BorderBrush}"
+BorderThickness="{TemplateBinding BorderThickness}"
+CornerRadius="15">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetName="border" 
+                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                            To="#66bb6a" Duration="0:0:0.5" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetName="border" 
+                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                            To="#407734" Duration="0:0:0.5" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+
+    </Grid>
+</Window>
