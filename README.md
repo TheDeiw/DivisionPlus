@@ -53,3 +53,20 @@ Brief description of the functionality
 **[EN]** Additional software configuration is not required, since it is completely ready to use.
 
 **[UA]** Додаткове налаштування програмного забезпечення не потрібне, оскільки воно повністю готове до використання.
+
+# Basic software functions
+**[EN]** The program can be divided into four main components - a table with a list of all data, a menu for editing data, a menu for filtering data and a menu for working with files. Almost all actions in the program are performed in the main window, using the keys in the data editing menu, which is located to the right of the table, and the list of products itself is displayed in the table on the left.
+On the left is the main table, which displays a list of data about soldiers. It includes the following columns: last name, first name, age, blood type, rank, ammunition. The table is updated when adding, changing or deleting records.
+In the data editing menu there are buttons for adding, editing and deleting data. There are also fields for entering data to search for a soldier by last name and first name.
+The next group contains all the fields for filtering data and displaying the filtered list.
+The fourth component contains buttons for working with files, reading the list of products from it, or recording the changes made.
+
+![Знімок екрана 2024-11-14 015005](https://github.com/user-attachments/assets/c93c9472-8c39-4ddf-9c65-01b6548703a9)
+
+**[UA]** Програму можна розділити на чотири основні компоненти – таблиця зі списком всіх даних, меню для редагування даних, меню для фільтрації даних та меню для роботи з файлами.
+Практично усі дії в програмі виконуються у головному вікні, за допомогою клавіш у меню редагування даних, що знаходиться справа від таблиці, а сам список товарів відображається у таблиці зліва.
+Зліва щнаходиться основна таблиця, в якій відображається список даних про солдатів. Включає такі колонки: прізвище, ім’я, вік, група крові, звання, боєкомплект. Таблиця оновлюється при додаванні, зміні або видаленні записів.
+У меню редагування даних знаходяться кнопки для додавання, редагування видалення даних. Також присутні поля для введення даних для пошуку солдата за прізвищем та іменем.
+У наступній групі є всі поля для фільтрації даних та виводу відфільтрованого списку.
+У четвертій компоненті є кнопки для дій з файлами, зчитування списку продуктів з неї, або запису здійснених змін.
+
