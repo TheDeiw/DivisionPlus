@@ -11,8 +11,7 @@ The program is developed in the C# programming language using WPF (Windows Prese
 
 
 # Purpose of use
-**[EN]** The main goal is to optimize work with data about soldiers (namely: adding, editing and deleting data) using a simple interface and an open-portable file format.
-Brief description of the functionality
+**[EN]** The main goal is to optimize work with data about soldiers (namely: adding, editing and deleting data) using a simple interface and an open-portable file format. Brief description of the functionality
 
 - Loading a list of soldiers from a file
 - Manually adding data about a soldier
